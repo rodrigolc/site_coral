@@ -1,11 +1,12 @@
 from django.db import models
+import time
 
 # Create your models here.
 
 class Post(models.Model):
     titulo = models.CharField(max_length=120)
-    data_postagem = models.DateTimeField(auto_now_add=True)
-    data_disponivel = models.DateTimeField()
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_publicacao = models.DateTimeField()
     data_editado = models.DateTimeField(auto_now=True)
 
     def _str_(self):
@@ -28,6 +29,10 @@ class Poema(Texto):
     pass
 
 class Colecao(models.Model):
-    posts = models.ManyToManyField('Post')
+    nome = models.CharField(max_length=80)
+    posts = models.ManyToManyField(Post)
+    data_criacao = models.DateTimeField(auto_now_add=True)
+    data_publicacao = models.DateTimeField()
+    data_editado = models.DateTimeField(auto_now=True)
 
 
