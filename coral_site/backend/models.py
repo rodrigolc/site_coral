@@ -41,4 +41,3 @@ class Colecao(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
     data_publicacao = models.DateTimeField()
     data_editado = models.DateTimeField(auto_now=True)
-
