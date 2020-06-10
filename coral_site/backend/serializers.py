@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Livro, Texto, Ilustracao, Poema, Colecao
+from .models import Post, Livro, Texto, Ilustracao, Poema, Colecao, Tag
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -35,4 +35,9 @@ class PoemaSerializer(serializers.ModelSerializer):
 class ColecaoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Colecao
+        fields = "__all__"
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
         fields = "__all__"

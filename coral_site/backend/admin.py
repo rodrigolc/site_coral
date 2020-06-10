@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Post, Colecao, Ilustracao, Livro, Poema, Texto
+from .models import Post, Colecao, Ilustracao, Livro, Poema, Texto, Tag
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -37,6 +37,13 @@ class TextoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'data_criacao',
                     'data_publicacao', 'data_editado')
 
+class TagAdmin(admin.ModelAdmin):
+    # shortcut para conseguir ter o numero de posts no admin
+    def tag_post_count(self, obj):
+        return obj.posts.count()
+    tag_post_count.short_description = "Numero de Posts"
+    list_display = ('nome', 'tag_post_count', 'data_criacao', 'data_editado')
+
 # Register your models here.
 
 
@@ -46,3 +53,4 @@ admin.site.register(Ilustracao, IlustracaoAdmin)
 admin.site.register(Livro, LivroAdmin)
 admin.site.register(Poema, PoemaAdmin)
 admin.site.register(Texto, TextoAdmin)
+admin.site.register(Tag, TagAdmin)

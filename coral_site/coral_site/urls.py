@@ -29,6 +29,11 @@ router.register(r'poemas', views.PoemaView, 'poema')
 router.register(r'colecoes', views.ColecaoView, 'colecao')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),         path('api/',
-                                                  include(router.urls))
+    path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('', views.index),
+    path('ilustra/<int:ilustra_id>/', views.detalhe_ilustra),
+    path('livro/<int:livro_id>/', views.detalhe_livro),
+    path('poema/<int:poema_id>/', views.detalhe_poema),
+    path('texto/<int:texto_id>/', views.detalhe_texto),
 ]
