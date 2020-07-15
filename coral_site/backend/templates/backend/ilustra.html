@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coral Daia, Escritora</title>
-</head>
-<body>
-    <img src="{{ ilustra.imagem.url }}" alt="{{ ilustra.titulo }}" >
-    <p>{{ ilustra.titulo }}</p>
-</body>
-</html>
+{% extends 'backend/base.html' %}
+
+{% block content %}
+<img src="{{ ilustra.imagem.url }}" alt="{{ ilustra.titulo }}" >
+<p>{{ ilustra.titulo }}</p>
+{% endblock content %}
+

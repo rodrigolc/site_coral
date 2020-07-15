@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-import time
 from model_utils.managers import InheritanceManager
 # Create your models here.
 
