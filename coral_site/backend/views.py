@@ -1,10 +1,9 @@
-
-from django.shortcuts import render
 from rest_framework import viewsets
+from django.shortcuts import get_object_or_404, render, redirect
+from django.http import Http404
+from django.core.paginator import Paginator
 from .serializers import PostSerializer, LivroSerializer, TextoSerializer, IlustracaoSerializer, PoemaSerializer, ColecaoSerializer, TagSerializer
 from .models import Post, Livro, Texto, Ilustracao, Poema, Colecao, Tag
-from django.http import Http404
-from django.shortcuts import get_object_or_404, render
 # Create your views here.
 
 class PostView(viewsets.ModelViewSet):
@@ -64,10 +63,15 @@ def view_poema(request, poema_id):
     return render(request, 'poema.html', {'poema': poema})
 
 #Post, Livro, Texto, Ilustracao, Poema, Colecao, Tag
+#posts por pagina
+PAGE_COUNT = 10
 
 def index(request):
-    latest_posts = Post.objects.order_by('-data_publicacao')[:10].select_subclasses()
-    context = {'latest_posts': latest_posts}
+    latest_posts = Post.objects.order_by('-data_publicacao').select_subclasses()
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts, 'page_number': page}
     return render(request, 'backend/index.html', context)
 
 def detalhe_ilustra(request, ilustra_id):
@@ -89,4 +93,30 @@ def detalhe_texto(request, texto_id):
     texto = get_object_or_404(Texto, id=texto_id)
     context = {'texto': texto}
     return render(request, 'backend/texto.html', context)
-    
+
+def detalhe_post_redirect(request, post_id):
+    get_object_or_404(Post, id=post_id)
+    post = Post.objects.get_subclass(id=post_id)
+    print(post)
+    if isinstance(post, Ilustracao):
+        return redirect("/ilustra/%d"%(post_id))
+    if isinstance(post, Livro):
+        return redirect("/livro/%d"%(post_id))
+    if isinstance(post, Poema):
+        return redirect("/poema/%d"%(post_id))
+    if isinstance(post, Texto):
+        return redirect("/texto/%d"%(post_id))
+    #raise Http404("Post não encontrado")
+
+
+def detalhe_colecao(request, colecao_id):
+    colecao = get_object_or_404(Colecao, id=colecao_id)
+    colecao_posts = colecao.posts.order_by('-data_publicacao').select_subclasses()
+    paginator = Paginator(colecao_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    colecao_posts = paginator.get_page(page)
+    context = {'colecao_posts': colecao_posts, 'page_number': page}
+    return render(request, 'backend/colecao.html', context)
+
+
+#   path('post/<int:post_id>/', views.detalhe_post_redirect,name='detalhe_post_redirect'),

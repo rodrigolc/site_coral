@@ -26,26 +26,26 @@ class Livro(Post):
         return self.titulo + '(' + self.editora + ')'
 
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_livro", kwargs={"id": self.id})
+        return reverse("detalhe_livro", kwargs={"livro_id": self.id})
 
 
 class Texto(Post):
     conteudo = models.TextField()
 
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_texto", kwargs={"id": self.id})
+        return reverse("detalhe_texto", kwargs={"texto_id": self.id})
 
 
 class Ilustracao(Post):
     imagem = models.ImageField
     
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_ilustra", kwargs={"id": self.id})
+        return reverse("detalhe_ilustra", kwargs={"ilustra_id": self.id})
 
 
 class Poema(Texto):
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_poema", kwargs={"id": self.id})
+        return reverse("detalhe_poema", kwargs={"poema_id": self.id})
 
 
 class Colecao(models.Model):
@@ -56,7 +56,7 @@ class Colecao(models.Model):
     data_editado = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_colecao", kwargs={"id": self.id})
+        return reverse("detalhe_colecao", kwargs={"id": self.id})
 
 
 class Tag(models.Model):
@@ -66,4 +66,4 @@ class Tag(models.Model):
     data_editado = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
-        return reverse("backend.views.detalhe_tag", kwargs={"id": self.id})
+        return reverse("detalhe_tag", kwargs={"id": self.id})
