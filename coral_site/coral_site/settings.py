@@ -25,7 +25,7 @@ SECRET_KEY = 'm1rjn0qce#061m7$9w0i5#pwq6@7$j+3#8*mi*p0g0lwq$^*_b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['coral-site.azurewebsites.net','coraldaia.com.br']
 
 
 # Application definition
