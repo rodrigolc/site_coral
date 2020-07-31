@@ -1,13 +1,29 @@
 {% extends 'backend/base.html' %}
 
 {% block content %}
+    <div class="container box">
     {% if latest_posts %}
         <ul>
         {% for post in latest_posts %}
-            <li><a href="{{ post.get_absolute_url }}">{{ post.titulo }}</a></li>
+        <div class="tile mb-6">
+            <div class="image">
+                <a href="{{post.get_absolute_url}}">
+                    <img class="is-3by4" src="{{ post.imagem.url }}" alt="{{ post.titulo }}" />
+                </a>
+            </div>
+            <div class="mx-4">
+                
+                    <p class="title"><a href="{{post.get_absolute_url}}">{{post.titulo}}</a></p>
+                
+                <p>{{post.descricao}}</p>
+                <a href="{{post.link_venda}}" >Link para compra.</a>
+            </div>
+                    
+        </div>
         {% endfor %}
         </ul>
     {% else %}
         <p>Nenhum post disponivel</p>
     {% endif %}
+    </div>
 {% endblock content %}

@@ -20,6 +20,7 @@ class Livro(Post):
     editora = models.CharField(max_length=80)
     descricao = models.TextField()
     link_venda = models.URLField()
+    imagem = models.ImageField(upload_to='books')
 
     def _str_(self):
         return self.titulo + '(' + self.editora + ')'
@@ -29,7 +30,9 @@ class Livro(Post):
 
 
 class Texto(Post):
+    descricao = models.TextField()
     conteudo = models.TextField()
+    imagem = models.ImageField(upload_to='textos',blank=True)
 
     def get_absolute_url(self):
         return reverse("detalhe_texto", kwargs={"texto_id": self.id})
@@ -37,7 +40,7 @@ class Texto(Post):
 
 class Ilustracao(Post):
     imagem = models.ImageField
-    
+
     def get_absolute_url(self):
         return reverse("detalhe_ilustra", kwargs={"ilustra_id": self.id})
 

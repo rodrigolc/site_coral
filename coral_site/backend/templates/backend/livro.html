@@ -2,14 +2,17 @@
 
 {% block content %}
     <div class="container box">
-    <div class="tile">
-                <img class="is-3by4" src="{{ livro.imagem }}" alt="{{ livro.titulo }}" />
-                <div>
-                    <p class="title">{{livro.titulo}}</p>
-                    <p>{{livro.descricao}}</p>
-                </div>
-                
+        <div class="tile">
+            <div class="image">
+                <img class="is-3by4" src="{{ livro.imagem.url }}" alt="{{ livro.titulo }}" />
             </div>
+            <div class="mx-4">
+                <p class="title">{{livro.titulo}}</p>
+                <p>{{livro.descricao}}</p>
+                <a href="{{livro.link_venda}}" >Link para compra.</a>
+            </div>
+                    
+        </div>
     </div>
     
 {% endblock content %}

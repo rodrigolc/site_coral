@@ -2,10 +2,18 @@
 
 {% block content %}
     <div class="container box">
-        <p class="title">{{ texto.titulo }}</p>
-        <p class="content">{{texto.conteudo}}</p>
-            
+    
+        {% if texto.imagem %}
+        <div class="image">
+            <img class="is-3by1 mb-4" src="{{ texto.imagem.url }}" alt="{{ texto.titulo }}" />
+        </div>
+        {% endif %}
+        
+        <div class="mx-4">
+            <p class="title has-text-centered">{{texto.titulo}}</p>
+            <p class="content">{{texto.conteudo | safe}}</p>
+        </div>
+    
     </div>
     
-
 {% endblock content %}

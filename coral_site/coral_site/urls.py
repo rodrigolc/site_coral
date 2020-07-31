@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from backend import views
+from coral_site import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 
@@ -45,3 +47,6 @@ urlpatterns = [
     path('colecoes/', views.colecoes, name='colecoes'),
     path('sobre/', views.sobre, name='sobre'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
