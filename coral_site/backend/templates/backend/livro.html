@@ -1,6 +1,15 @@
 {% extends 'backend/base.html' %}
 
 {% block content %}
-    <img src="{{ livro.imagem }}" alt="{{ livro.titulo }}" >
-    <p>{{ livro.titulo }}</p>
+    <div class="container box">
+    <div class="tile">
+                <img class="is-3by4" src="{{ livro.imagem }}" alt="{{ livro.titulo }}" />
+                <div>
+                    <p class="title">{{livro.titulo}}</p>
+                    <p>{{livro.descricao}}</p>
+                </div>
+                
+            </div>
+    </div>
+    
 {% endblock content %}

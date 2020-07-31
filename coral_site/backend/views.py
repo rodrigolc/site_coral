@@ -71,23 +71,55 @@ def index(request):
     paginator = Paginator(latest_posts, PAGE_COUNT)
     page = request.GET.get('page', 1)
     latest_posts = paginator.get_page(page)
-    context = {'latest_posts': latest_posts, 'page_number': page}
+    context = {'latest_posts': latest_posts}
     return render(request, 'backend/index.html', context)
+
+def ilustras(request):
+    latest_posts = Ilustracao.objects.order_by('-data_publicacao')
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts}
+    return render(request, 'backend/ilustras.html', context)
 
 def detalhe_ilustra(request, ilustra_id):
     ilustra = get_object_or_404(Ilustracao, id=ilustra_id)
     context = {'ilustra': ilustra}
     return render(request, 'backend/ilustra.html', context)
 
+def livros(request):
+    latest_posts = Livro.objects.order_by('-data_publicacao')
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts}
+    return render(request, 'backend/livros.html', context)
+
 def detalhe_livro(request, livro_id):
     livro = get_object_or_404(Livro, id=livro_id)
     context = {'livro': livro}
     return render(request, 'backend/livro.html', context)
 
+def poemas(request):
+    latest_posts = Poema.objects.order_by('-data_publicacao')
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts}
+    return render(request, 'backend/poemas.html', context)
+
 def detalhe_poema(request, poema_id):
     poema = get_object_or_404(Poema, id=poema_id)
     context = {'poema': poema}
     return render(request, 'backend/poema.html', context)
+
+def textos(request):
+    latest_posts = Texto.objects.order_by('-data_publicacao')
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts}
+    return render(request, 'backend/textos.html', context)
 
 def detalhe_texto(request, texto_id):
     texto = get_object_or_404(Texto, id=texto_id)
@@ -106,7 +138,16 @@ def detalhe_post_redirect(request, post_id):
         return redirect("/poema/%d"%(post_id))
     if isinstance(post, Texto):
         return redirect("/texto/%d"%(post_id))
-    #raise Http404("Post não encontrado")
+    raise Http404("Post não encontrado")
+
+
+def colecoes(request):
+    latest_posts = Colecao.objects.order_by('-data_publicacao')
+    paginator = Paginator(latest_posts, PAGE_COUNT)
+    page = request.GET.get('page', 1)
+    latest_posts = paginator.get_page(page)
+    context = {'latest_posts': latest_posts}
+    return render(request, 'backend/colecoes.html', context)
 
 
 def detalhe_colecao(request, colecao_id):
@@ -118,5 +159,5 @@ def detalhe_colecao(request, colecao_id):
     context = {'colecao_posts': colecao_posts, 'page_number': page}
     return render(request, 'backend/colecao.html', context)
 
-
-#   path('post/<int:post_id>/', views.detalhe_post_redirect,name='detalhe_post_redirect'),
+def sobre(request):
+    return render(request, 'backend/sobre.html')

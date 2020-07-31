@@ -1,6 +1,9 @@
 {% extends 'backend/base.html' %}
 
 {% block content %}
-    <img src="{{ poema.imagem }}" alt="{{ poema.titulo }}" >
-    <p>{{ poema.titulo }}</p>
+    {% if poema.imagem %}
+        <img src="{{ poema.imagem }}" alt="{{ poema.titulo }}" >
+    {% endif %}
+    
+    <p class="title">{{ poema.titulo }}</p>
 {% endblock content %}
