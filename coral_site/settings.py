@@ -25,7 +25,7 @@ SECRET_KEY = 'm1rjn0qce#061m7$9w0i5#pwq6@7$j+3#8*mi*p0g0lwq$^*_b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['coral-site.azurewebsites.net','coraldaia.com.br','127.0.0.1']
+ALLOWED_HOSTS = ['coraldaia.azurewebsites.net', 'coraldaia.com.br', '127.0.0.1']
 
 
 # Application definition
@@ -128,7 +128,7 @@ USE_TZ = True
 #     'https://localhost:3000'
 # ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
