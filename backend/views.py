@@ -161,3 +161,6 @@ def detalhe_colecao(request, colecao_id):
 
 def sobre(request):
     return render(request, 'backend/sobre.html')
+
+def contato(request):
+    return render(request, 'backend/contato.html')

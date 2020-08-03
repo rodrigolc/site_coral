@@ -14,21 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
+from django.conf.urls.static import static
+# from rest_framework import routers
 from backend import views
 from coral_site import settings
-from django.conf.urls.static import static
 
-router = routers.DefaultRouter()
+# router = routers.DefaultRouter()
 
-router.register(r'posts', views.PostView, 'post')
-router.register(r'livros', views.LivroView, 'livro')
-router.register(r'textos', views.TextoView, 'texto')
-router.register(r'ilustracoes', views.IlustracaoView,
-                'ilustracao')
-router.register(r'poemas', views.PoemaView, 'poema')
-router.register(r'colecoes', views.ColecaoView, 'colecao')
+# router.register(r'posts', views.PostView, 'post')
+# router.register(r'livros', views.LivroView, 'livro')
+# router.register(r'textos', views.TextoView, 'texto')
+# router.register(r'ilustracoes', views.IlustracaoView,
+#                 'ilustracao')
+# router.register(r'poemas', views.PoemaView, 'poema')
+# router.register(r'colecoes', views.ColecaoView, 'colecao')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,7 +46,9 @@ urlpatterns = [
     path('textos/', views.textos, name='textos'),
     path('colecoes/', views.colecoes, name='colecoes'),
     path('sobre/', views.sobre, name='sobre'),
+    path('contato/', views.contato, name='contato'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
