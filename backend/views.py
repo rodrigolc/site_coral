@@ -1,38 +1,38 @@
-from rest_framework import viewsets
+# from rest_framework import viewsets
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404
 from django.core.paginator import Paginator
-from .serializers import PostSerializer, LivroSerializer, TextoSerializer, IlustracaoSerializer, PoemaSerializer, ColecaoSerializer, TagSerializer
-from .models import Post, Livro, Texto, Ilustracao, Poema, Colecao, Tag
+# from .serializers import PostSerializer, LivroSerializer,TextoSerializer, IlustracaoSerializer, PoemaSerializer, ColecaoSerializer, TagSerializer
+from .models import Post, Livro, Texto, Ilustracao, Poema, Colecao#, Tag
 # Create your views here.
 
-class PostView(viewsets.ModelViewSet):
-    serializer_class = PostSerializer
-    queryset = Post.objects.all()
+# class PostView(viewsets.ModelViewSet):
+#     serializer_class = PostSerializer
+#     queryset = Post.objects.all()
 
-class LivroView(viewsets.ModelViewSet):
-    serializer_class = LivroSerializer
-    queryset = Livro.objects.all()
+# class LivroView(viewsets.ModelViewSet):
+#     serializer_class = LivroSerializer
+#     queryset = Livro.objects.all()
 
-class TextoView(viewsets.ModelViewSet):
-    serializer_class = TextoSerializer
-    queryset = Texto.objects.all()
+# class TextoView(viewsets.ModelViewSet):
+#     serializer_class = TextoSerializer
+#     queryset = Texto.objects.all()
 
-class IlustracaoView(viewsets.ModelViewSet):
-    serializer_class = IlustracaoSerializer
-    queryset = Ilustracao.objects.all()
+# class IlustracaoView(viewsets.ModelViewSet):
+#     serializer_class = IlustracaoSerializer
+#     queryset = Ilustracao.objects.all()
 
-class PoemaView(viewsets.ModelViewSet):
-    serializer_class = PoemaSerializer
-    queryset = Poema.objects.all()
+# class PoemaView(viewsets.ModelViewSet):
+#     serializer_class = PoemaSerializer
+#     queryset = Poema.objects.all()
 
-class ColecaoView(viewsets.ModelViewSet):
-    serializer_class = ColecaoSerializer
-    queryset = Colecao.objects.all()
+# class ColecaoView(viewsets.ModelViewSet):
+#     serializer_class = ColecaoSerializer
+#     queryset = Colecao.objects.all()
 
-class TagView(viewsets.ModelViewSet):
-    serializer_class = TagSerializer
-    queryset = Tag.objects.all()
+# class TagView(viewsets.ModelViewSet):
+#     serializer_class = TagSerializer
+#     queryset = Tag.objects.all()
 
 def view_ilustra(request, ilustra_id):
     try:
