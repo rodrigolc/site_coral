@@ -130,5 +130,5 @@ CORS_ORIGIN_WHITELIST = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
-# STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = '/home/site/wwwroot/coral_site/static'
+STATIC_ROOT =  os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = '/home/site/wwwroot/coral_site/static'
