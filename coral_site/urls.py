@@ -32,7 +32,7 @@ router.register(r'colecoes', views.ColecaoView, 'colecao')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    # path('api/', include(router.urls)),
     path('', views.index),
     path('ilustra/<int:ilustra_id>/', views.detalhe_ilustra, name='detalhe_ilustra'),
     path('livro/<int:livro_id>/', views.detalhe_livro, name='detalhe_livro'),
