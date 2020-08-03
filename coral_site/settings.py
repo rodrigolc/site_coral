@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',          # Cors para processar cross request
-                            # entre backend e frontend
-    'rest_framework',       # integracao com o react no frontend
     'backend',
 ]
 
